@@ -1,0 +1,7 @@
+.app{
+  display: flex;
+  margin: 150px auto;
+  width: 600px;
+  height: 400px;
+  background: whitesmoke;
+}
