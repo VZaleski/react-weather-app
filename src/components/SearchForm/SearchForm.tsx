@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from './SearchForm.module.css'
-import deleteImage from './../assets/images/delete.svg'
+import deleteImage from '../../assets/images/delete.svg'
 
 const SearchForm: React.FC = () => {
     let [valueInput, setValueInput] = useState('');
