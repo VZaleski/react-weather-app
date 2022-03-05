@@ -4,6 +4,10 @@ import cloudImage from './../../../assets/images/cloud.svg'
 
 const DetailsModule: React.FC = () => {
 
+    const himidity: string = '82%';
+    const wind: string = '11 KPH SE';
+    const airQuality: string = 'Moderate';
+
     return (
         <div className={styles.blockDetails}>
             <div className={styles.wrapper}>
@@ -20,9 +24,9 @@ const DetailsModule: React.FC = () => {
                         </div>
                     </div>
                     <div className={styles.contentTwo}>
-                        <span>Himidity: <span>82%</span></span>
-                        <span>Wind: <span>11 KPH SE</span></span>
-                        <span>Air Quality: <span>Moderate</span></span>
+                        <span>Himidity: {himidity}</span>
+                        <span>Wind: {wind}</span>
+                        <span>Air Quality: {airQuality}</span>
                     </div>
                 </div>
             </div>
