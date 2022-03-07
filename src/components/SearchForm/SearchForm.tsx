@@ -1,8 +1,12 @@
-import React, {useState} from 'react';
+import React, {PropsWithChildren, useState} from 'react';
 import styles from './SearchForm.module.css'
 import deleteImage from '../../assets/images/delete.svg'
 
-const SearchForm: React.FC = () => {
+interface props {
+    sendCityName: (param: string) => void
+}
+
+const SearchForm: React.FC<props> = ({sendCityName}) => {
     let [valueInput, setValueInput] = useState('');
 
     const deleteWord = () => {
@@ -10,12 +14,21 @@ const SearchForm: React.FC = () => {
         setValueInput(valueInput);
     }
 
+    const takeCityName = () => {
+        sendCityName(valueInput)
+    }
+
     return (
         <div className={styles.searchForm}>
             <input value={valueInput}
                    onChange={event => setValueInput(event.target.value)}
+                   onKeyDown={(event) => {
+                       if(event.code === 'Enter') {
+                           takeCityName();
+                       }
+                   }}
                    className={styles.searchForm__field}
-                   placeholder='City'
+                   placeholder='Enter the name of the city'
                    type="text"/>
             <img onClick={deleteWord}
                  src={deleteImage}
