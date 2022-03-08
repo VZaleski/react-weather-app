@@ -26,18 +26,15 @@ const useForecastWeather = () => {
     const sendRequestCityName = (city: string) => {
         getCoordinates(city)
             .then((resp1) => {
-                forecastWeather = resp1.data;
-                console.log(forecastWeather);
+                forecastWeather = resp1.data[0];
                 const lat: string = resp1.data[0].lat;
                 const lon: string = resp1.data[0].lon;
                 getAirPollution(resp1.data, lat, lon)
                     .then((resp2) => {
                         forecastWeather = Object.assign(forecastWeather, resp2.data);
-                        console.log(forecastWeather);
                         getForecastWeatherSevenDays(resp2.data, lat, lon, exclude)
                             .then((resp3) => {
                                 forecastWeather = Object.assign(forecastWeather, resp3.data);
-                                console.log(forecastWeather);
                                 setError(false);
                                 setForecastWeather(forecastWeather);
                             })
