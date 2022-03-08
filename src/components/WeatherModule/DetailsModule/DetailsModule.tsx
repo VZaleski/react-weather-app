@@ -1,16 +1,23 @@
 import React from 'react';
 import styles from './DetailsModule.module.css'
-import cloudImage from './../../../assets/images/cloud.svg'
 import {currentTimeFunction} from "../../../additionalFunctions/currentTime";
+import {currentWeatherIconFunction} from "../../../additionalFunctions/currentWeatherIcon";
+import {getWeatherData} from "../../../additionalFunctions/currentDataDetailsModule";
 
-const DetailsModule: React.FC = () => {
+interface props {
+    data: any
+}
 
-    let himidity: string = '82%';
+const DetailsModule: React.FC<props> = ({data}) => {
+
+    let humidity: string = `${82}%`;
     let wind: string = '11 KPH SE';
     let airQuality: string = 'Moderate';
     const timeData = currentTimeFunction();
     const weekday = timeData.weekday;
-    const hours = timeData.time
+    const hours = timeData.time;
+    const currentWeatherIcon = currentWeatherIconFunction('data.weather[0].icon');
+    //getWeatherData(data);
 
     return (
         <div className={styles.blockDetails}>
@@ -19,7 +26,7 @@ const DetailsModule: React.FC = () => {
                 <span className={styles.blockDetails__subtitle}>{weekday} {hours} • Overcast clouds</span>
                 <div className={styles.content}>
                     <div className={styles.contentOne}>
-                        <img className={styles.contentOne__image} src={cloudImage} alt="image-weather"/>
+                        <img className={styles.contentOne__image} src={currentWeatherIcon} alt="image-weather"/>
                         <span className={styles.contentOne__degree}>20°</span>
                         <div className={styles.unit}>
                             <span>F</span>
@@ -28,7 +35,7 @@ const DetailsModule: React.FC = () => {
                         </div>
                     </div>
                     <div className={styles.contentTwo}>
-                        <span>Himidity: {himidity}</span>
+                        <span>Himidity: {humidity}</span>
                         <span>Wind: {wind}</span>
                         <span>Air Quality: {airQuality}</span>
                     </div>

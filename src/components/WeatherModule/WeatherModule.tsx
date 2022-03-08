@@ -8,10 +8,9 @@ interface props {
 }
 
 const WeatherModule: React.FC<props> = ({data}) => {
-    console.log(data);
     return (
         <div className={styles.weatherModule}>
-            <DetailsModule />
+            <DetailsModule data = {data} />
             <DaysModule />
         </div>
     );
