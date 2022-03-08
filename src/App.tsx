@@ -17,7 +17,7 @@ const App: React.FC = () => {
         <div className={styles.app}>
             <SearchForm sendCityName = {sendCityName} />
             {error && <Error />}
-            {forecastWeather && <WeatherModule />}
+            {forecastWeather && <WeatherModule data = {forecastWeather} />}
         </div>
     );
 }

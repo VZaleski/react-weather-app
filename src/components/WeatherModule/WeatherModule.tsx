@@ -3,8 +3,12 @@ import styles from './WeatherModule.module.css'
 import DetailsModule from "./DetailsModule/DetailsModule";
 import DaysModule from "./DaysModule/DaysModule";
 
-const WeatherModule: React.FC = () => {
+interface props {
+    data: object
+}
 
+const WeatherModule: React.FC<props> = ({data}) => {
+    console.log(data);
     return (
         <div className={styles.weatherModule}>
             <DetailsModule />
