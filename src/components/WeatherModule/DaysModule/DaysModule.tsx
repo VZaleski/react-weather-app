@@ -16,7 +16,8 @@ const DaysModule: React.FC<props> = ({data}) => {
     for (let i = 0; i < lengthArray; i++) {
         arrayDaysModuleItem.push(<DaysModuleItem min = {newData.arrayMinTemp[i]}
                                                  max = {newData.arrayMaxTemp[i]}
-                                                 icon = {newData.arrayIcons[i]} />)
+                                                 icon = {newData.arrayIcons[i]}
+                                                 weekday = {newData.arrayWeekday[i]} />)
     }
 
     return (

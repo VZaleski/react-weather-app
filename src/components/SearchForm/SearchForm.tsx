@@ -1,13 +1,17 @@
 import React, {PropsWithChildren, useState} from 'react';
 import styles from './SearchForm.module.css'
 import deleteImage from '../../assets/images/delete.svg'
+import useForecastWeather from "../../hooks/useForecastWeather";
 
 interface props {
-    sendCityName: (param: string) => void
+    sendCityName: (param: string) => void;
 }
 
 const SearchForm: React.FC<props> = ({sendCityName}) => {
+
     let [valueInput, setValueInput] = useState('');
+    let placeholder: string = 'Enter the name of the city';
+
 
     const deleteWord = () => {
         valueInput = '';
@@ -15,7 +19,7 @@ const SearchForm: React.FC<props> = ({sendCityName}) => {
     }
 
     const takeCityName = () => {
-        sendCityName(valueInput)
+            sendCityName(valueInput);
     }
 
     return (
@@ -28,7 +32,7 @@ const SearchForm: React.FC<props> = ({sendCityName}) => {
                        }
                    }}
                    className={styles.searchForm__field}
-                   placeholder='Enter the name of the city'
+                   placeholder = {placeholder}
                    type="text"/>
             <img onClick={deleteWord}
                  src={deleteImage}
