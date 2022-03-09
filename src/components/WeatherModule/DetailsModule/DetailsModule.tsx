@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './DetailsModule.module.css'
 import {currentTimeFunction} from "../../../additionalFunctions/currentTime";
 import {getWeatherData} from "../../../additionalFunctions/currentDataDetailsModule";
+import {convertCelsiusToFahrenheit, convertFahrenheitToCelsius} from '../../../additionalFunctions/convertCelsiusToFahrenheit'
 
 interface props {
     data: any
@@ -10,7 +11,6 @@ interface props {
 const DetailsModule: React.FC<props> = ({data}) => {
 
     const dataCurrentWeather = getWeatherData(data);
-    console.log(data);
     const humidity: string = dataCurrentWeather.humidity;
     const wind: string = dataCurrentWeather.wind;
     const airQuality: string = dataCurrentWeather.airQuality;
@@ -21,7 +21,15 @@ const DetailsModule: React.FC<props> = ({data}) => {
     const timeData = currentTimeFunction();
     const weekday = timeData.weekday;
     const hours = timeData.time;
-    const temperature = dataCurrentWeather.temperature;
+    let temperature = dataCurrentWeather.temperature;
+
+    const convertToFahrenheit = () => {
+        temperature = convertCelsiusToFahrenheit(temperature);
+    }
+
+    const convertToCelsius = () => {
+        temperature = convertFahrenheitToCelsius(temperature);
+    }
 
     return (
         <div className={styles.blockDetails}>
@@ -33,9 +41,9 @@ const DetailsModule: React.FC<props> = ({data}) => {
                         <img className={styles.contentOne__image} src={currentWeatherIcon} alt="image-weather"/>
                         <span className={styles.contentOne__degree}>{temperature}°</span>
                         <div className={styles.unit}>
-                            <span>F</span>
+                            <span onClick={convertToFahrenheit}>F</span>
                             <span className={styles.unitActive}>/</span>
-                            <span className={styles.unitActive}>C</span>
+                            <span onClick={convertToCelsius} className={styles.unitActive}>C</span>
                         </div>
                     </div>
                     <div className={styles.contentTwo}>
