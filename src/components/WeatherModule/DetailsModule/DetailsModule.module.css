@@ -65,6 +65,10 @@
     margin-top: -20px;
 }
 
+.unit span:hover {
+    cursor: pointer;
+}
+
 .unitActive {
     color: #000000;
 }

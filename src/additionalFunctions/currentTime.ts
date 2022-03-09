@@ -8,12 +8,11 @@ const days = [
     'Saturday'
 ];
 
-const date = new Date();
-const numberDayWeek = date.getDay();
-let hours = date.getHours();
-let formatAmPm: string;
-
 export const currentTimeFunction = () => {
+    const date = new Date();
+    const numberDayWeek = date.getDay();
+    let hours = date.getHours();
+    let formatAmPm: string;
     if(hours >= 12) {
         formatAmPm = 'PM'
     } else {

@@ -1,16 +1,13 @@
-import React, {PropsWithChildren, useState} from 'react';
+import React, {useState} from 'react';
 import styles from './SearchForm.module.css'
 import deleteImage from '../../assets/images/delete.svg'
-import useForecastWeather from "../../hooks/useForecastWeather";
 
 interface props {
     sendCityName: (param: string) => void,
     deleteBlock: () => void,
-    error: boolean,
-    isError: () => void,
 }
 
-const SearchForm: React.FC<props> = ({sendCityName, deleteBlock, error, isError}) => {
+const SearchForm: React.FC<props> = ({sendCityName, deleteBlock}) => {
 
     let [valueInput, setValueInput] = useState('');
     let placeholder: string = 'Enter the name of the city';
