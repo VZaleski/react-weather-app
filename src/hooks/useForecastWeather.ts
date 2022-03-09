@@ -1,6 +1,5 @@
 import {useState} from "react";
-import axios, {AxiosResponse} from "axios";
-import {log} from "util";
+import axios from "axios";
 
 const key: string = '1c5da32bd6a0d1c4c017b21b49833c7f';
 const exclude: string = 'hourly,minutely,alerts';
@@ -54,10 +53,22 @@ const useForecastWeather = () => {
             })
     }
 
+    const deleteWeatherModuleBlock = () => {
+        setForecastWeather(null);
+        setError(false);
+    }
+
+    const isErrorFalse = () => {
+            error = false;
+            setError(error);
+    }
+
     return {
         forecastWeather,
         error,
-        sendRequestCityName
+        sendRequestCityName,
+        deleteWeatherModuleBlock,
+        isErrorFalse,
     }
 }
 

@@ -5,7 +5,18 @@ import {getWeatherData} from "../../../additionalFunctions/currentDataDetailsMod
 import {convertCelsiusToFahrenheit, convertFahrenheitToCelsius} from '../../../additionalFunctions/convertCelsiusToFahrenheit'
 
 interface props {
-    data: any
+    data: {
+        name: string,
+        country: string,
+        current: {
+            weather: { icon: string, description: string }[],
+            humidity: string,
+            temp: string,
+            wind_deg: string,
+            wind_speed: string,
+        },
+        list: { main: { aqi: string } }[],
+    }
 }
 
 const DetailsModule: React.FC<props> = ({data}) => {

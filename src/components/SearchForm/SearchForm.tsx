@@ -4,16 +4,19 @@ import deleteImage from '../../assets/images/delete.svg'
 import useForecastWeather from "../../hooks/useForecastWeather";
 
 interface props {
-    sendCityName: (param: string) => void;
+    sendCityName: (param: string) => void,
+    deleteBlock: () => void,
+    error: boolean,
+    isError: () => void,
 }
 
-const SearchForm: React.FC<props> = ({sendCityName}) => {
+const SearchForm: React.FC<props> = ({sendCityName, deleteBlock, error, isError}) => {
 
     let [valueInput, setValueInput] = useState('');
     let placeholder: string = 'Enter the name of the city';
 
-
     const deleteWord = () => {
+        deleteBlock();
         valueInput = '';
         setValueInput(valueInput);
     }

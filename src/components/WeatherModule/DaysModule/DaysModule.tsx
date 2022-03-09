@@ -4,13 +4,22 @@ import DaysModuleItem from "./DaysModuleItem/DaysModuleItem";
 import {dataDaysModule} from "../../../additionalFunctions/dataDaysModule";
 
 interface props {
-    data: any
+    data: {
+        daily: {
+            temp: {
+                max: number,
+                min: number
+            },
+            weather: {
+                icon: string
+            }[],
+        }[],
+    }
 }
 
 const DaysModule: React.FC<props> = ({data}) => {
 
     const newData = dataDaysModule(data);
-    console.log(newData)
     const lengthArray: number = 8;
     const arrayDaysModuleItem = new Array(lengthArray);
     for (let i = 0; i < lengthArray; i++) {

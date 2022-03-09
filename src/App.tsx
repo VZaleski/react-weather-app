@@ -7,15 +7,25 @@ import useForecastWeather from "./hooks/useForecastWeather";
 
 const App: React.FC = () => {
 
-    const {forecastWeather, error, sendRequestCityName} = useForecastWeather();
+    const {forecastWeather, error, sendRequestCityName, deleteWeatherModuleBlock, isErrorFalse} = useForecastWeather();
 
     const sendCityName = (value: string) => {
         sendRequestCityName(value);
     }
+    const deleteBlock = () => {
+        deleteWeatherModuleBlock();
+    }
+
+    const isError = () => {
+        isErrorFalse();
+    }
 
     return (
         <div className={styles.app}>
-            <SearchForm sendCityName = {sendCityName} />
+            <SearchForm error = {error}
+                        isError = {isError}
+                        deleteBlock = {deleteBlock}
+                        sendCityName = {sendCityName} />
             {error && <Error />}
             {forecastWeather && <WeatherModule data = {forecastWeather} />}
         </div>
