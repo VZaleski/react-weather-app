@@ -2,14 +2,19 @@ import React from 'react';
 import styles from './DaysModuleItem.module.css'
 import imageItem from './../../../../assets/images/cloud.svg'
 
-const DaysModuleItem: React.FC = () => {
+interface props {
+    min: string,
+    max: string,
+    icon: string
+}
 
+const DaysModuleItem: React.FC<props> = ({min, max, icon}) => {
     return (
         <div className={styles.item} >
             <h3 className={styles.item__title}>Sun</h3>
-            <img className={styles.item__image} src={imageItem} alt=""/>
-            <span className={styles.item__max} >22°</span>
-            <span className={styles.item__min}>16°</span>
+            <img className={styles.item__image} src={icon} alt=""/>
+            <span className={styles.item__max} >{max}°</span>
+            <span className={styles.item__min}>{min}°</span>
         </div>
     );
 }

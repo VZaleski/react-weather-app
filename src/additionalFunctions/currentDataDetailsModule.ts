@@ -11,12 +11,12 @@ interface dataType {
     list: { main: { aqi: string } }[],
 }
 
-const kelvin: number = 273.15;
 const degOneEighth: number = 45;
 const baseUrlIcon = ' http://openweathermap.org/img/wn/'
 const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
 
-const convertCelsius = (value: string) => {
+export const convertCelsius = (value: string) => {
+    const kelvin: number = 273.15;
     let tempKelvin: number = +value;
     return `${Math.round(tempKelvin - kelvin)}`;
 }

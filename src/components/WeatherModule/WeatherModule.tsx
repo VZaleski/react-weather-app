@@ -11,7 +11,7 @@ const WeatherModule: React.FC<props> = ({data}) => {
     return (
         <div className={styles.weatherModule}>
             <DetailsModule data = {data} />
-            <DaysModule />
+            <DaysModule data = {data}  />
         </div>
     );
 }
